@@ -8,10 +8,27 @@
             list-style-type: none;
             background-color:plum;
             border-radius:10px;
+            padding: 12px;
+            width: 300px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
+         .list li {
+            border-radius: 8px;
+            overflow: hidden;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+       }
         .list a {
-            color: white;
+            display: block;
+            padding: 12px 20px;
+
+            color: #241b2f;
             text-decoration: none;
+            text-align: center;
+            font-weight: bold;
         }
         .list li.b1 {
             background-color: rebeccapurple
@@ -28,6 +45,14 @@
         .list li.b5{
             background-color:palegoldenrod
         }
+        .list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .list a:focus-visible {
+           outline: 2px solid black;
+           outline-offset: -3px;
+       }
 
     </style>
 </head>
