@@ -1,13 +1,48 @@
+<!DOCTYPE html>
 <html lang="ro">
-    <head>
-        <meta charset = "UTF-8">
-        <title> Pagina principala </title>
-    </head>
-    <body>
-        <h1> Laboratoarele mele</h1>
-        <p> Programarea aplicatiilor web - Seria MIAI </p>
-        <a href = "Laborator1/"> Laboratorul 1 </a><br>
-        <a href = "Laborator2/"> Laboratorul 2 </a>
-        <a herf = "Laborator 3/"> Laboratoeul 3 </a>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina principala</title>
+    <style>
+        /* 1. Lista neordonată */
+        .lista-laboratoare {
+            list-style-type: none; /* Ascunde bulinele implicite */
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Așază elementele unul sub altul */
+            gap: 10px;
+        }
+
+        /* 2. Butoane colorate uniform și de aceeași lățime */
+        .lista-laboratoare a {
+            display: inline-block;
+            width: 250px; /* CERINȚA: toate de aceeași lățime */
+            background-color: #3498db; /* CERINȚA: colorate uniform */
+            color: white; 
+            padding: 12px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px; /* Le face să arate a butoane */
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        /* 3. Opțional: schimbați culoarea la hover */
+        .lista-laboratoare a:hover {
+            background-color: #2980b9; /* CERINȚA: se întunecă la trecerea mouse-ului */
+        }
+    </style>
+</head>
+<body>
+    <h1>Laboratoarele mele</h1>
+    <p>Programarea aplicatiilor web - Seria MIAI</p>
+    
+    <!-- Am folosit tag-ul <ul> pentru lista neordonată -->
+    <ul class="lista-laboratoare">
+        <li><a href="Laborator1/">Laboratorul 1</a></li>
+        <li><a href="Laborator2/">Laboratorul 2</a></li>
+        <li><a href="lab3/">Laboratorul 3 - Publicare site și CSS</a></li>
+    </ul>
+</body>
 </html>
