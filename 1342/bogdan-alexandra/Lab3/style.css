@@ -1,0 +1,27 @@
+
+.header1 {
+    background-color:GreenYellow;
+    text-align:center;
+    font-size:14px
+}
+
+.header2 {
+    background-color:GreenYellow;
+    text-align:center;
+    font-size:14px
+}
+
+.paragraf {
+    font-family:'Times New Roman', serif;
+    font-size:12pt;
+    color:green
+}
+
+a:hover {
+    color:blue;
+    background-color:yellow
+}
+a:active {
+    color:red;
+    background-color:yellow
+}
