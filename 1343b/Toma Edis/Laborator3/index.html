@@ -2,36 +2,43 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Pagina Personala - Laboratoare</title>
+    <title>Laboratorul 3 Stiluri CSS</title>
     <style>
-        .meniu-laboratoare {
+        .butoane-list {
             list-style-type: none;
             padding: 0;
+            display: flex;
+            gap: 15px;
         }
-        .meniu-laboratoare li {
-            margin-bottom: 15px; /* Spațiu vertical între butoane */
-        }
-        .meniu-laboratoare a {
-            display: inline-block;
-            width: 300px; /* Toate de aceeași lățime */
-            text-align: center;
-            background-color: #2980b9;
-            color: white;
+
+        .butoane-list a {
             text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-family: Arial, sans-serif;
-            transition: background-color 0.3s ease; /* Efect la hover */
+            font-weight: bold;
         }
-        .meniu-laboratoare a:hover {
-            background-color: #1a5276; /* Schimbă culoarea la hover */
+
+        .btn-indicatii { background-color: #3498db; } 
+        .btn-inline { background-color: #16a085; } 
+        .btn-interne { 
+            background-color: #f39c12;
+            color: black !important;
         }
+        .btn-externe { background-color: #e84393; } 
+        .btn-inapoi { background-color: #7f8c8d; } 
     </style>
 </head>
 <body>
-    <h1>Laboratoare Web</h1>
-    <ul class="meniu-laboratoare">
-        <li><a href="lab3/">Laboratorul 3 - Publicare site și CSS</a></li>
+    <h1>Laboratorul 3 stiluri CSS</h1>
+
+    <ul class="butoane-list">
+        <li><a href="FormtareText.html" class="btn-indicatii">Indicaţii</a></li>
+        <li><a href="FormtareText_inline.html" class="btn-inline">Stiluri inline</a></li>
+        <li><a href="FormtareText_internal.html" class="btn-interne">Stiluri interne</a></li>
+        <li><a href="FormtareText_external.html" class="btn-externe">Stiluri externe</a></li>
+        <li><a href="../index.html" class="btn-inapoi">Laboratoarele mele</a></li>
     </ul>
 </body>
 </html>
