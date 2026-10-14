@@ -46,22 +46,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis justo mi, luctus t
 <!--
   EXERCIȚIU BONUS:
   
-  1. STILUL INLINE:
-     - Are cea mai mare prioritate dintre cele trei reguli.
-     - Când toate cele trei reguli sunt active simultan, textul paragrafului este afișat MOV.
+  Stilul inline are cea mai mare prioritate dintre cele trei reguli.
+  Când toate cele trei reguli sunt active simultan, textul paragrafului este afișat MOV.
+  Atunci când eliminăm regula inline, cele două reguli (.verde) au aceeași specificitate (0, 0, 1, 0).
+ 
+  Prioritatea este decisă de ordinea în cod (ordinea apariției în <head>):
+  Cazul A: Regula din <style> apare după <link> și o suprascrie pe cea externă -> textul se afișează PORTOCALIU.
+  Cazul B: Regula din fișierul extern myStyle.css este încărcată ultima și o suprascrie pe cea internă -> textul se afișează VERDE.
   
-  2. STILURILE INTERNE vs. STILURILE EXTERNE:
-     - Atunci când eliminăm regula inline, cele două reguli (.verde) au aceeași specificitate (0, 0, 1, 0).
-     - Prioritatea este decisă de ordinea în cod (ordinea apariției în <head>):
-       Cazul A: Regula din <style> apare după <link> și o suprascrie pe cea externă -> textul se afișează PORTOCALIU.
-       Cazul B: Regula din fișierul extern myStyle.css este încărcată ultima și o suprascrie pe cea internă -> 
-                   textul se afișează VERDE.
-  
-  3. CONCLUZIE:
-     Ordinea de prioritate este:
-     1. Stiluri inline (atributul style din tag)
-     2. Stiluri interne sau externe, prioritatea fiind dată de ultima regulă întâlnită în cod
-     3. Stilurile implicite ale browserului 
+  CONCLUZIE:
+ 
+  Ordinea de prioritate este:
+  1. Stiluri inline (atributul style din tag)
+  2. Stiluri interne sau externe, prioritatea fiind dată de ultima regulă întâlnită în cod
+  3. Stilurile implicite ale browserului 
 -->
 </body>
 </html>
