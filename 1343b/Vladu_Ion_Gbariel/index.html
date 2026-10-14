@@ -2,47 +2,38 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Pagina principala</title>
+    <title>Pagina Personala - Laboratoare</title>
     <style>
-        /* 1. Lista neordonată */
-        .lista-laboratoare {
-            list-style-type: none; /* Ascunde bulinele implicite */
+        .meniu-laboratoare {
+            list-style-type: none;
             padding: 0;
-            display: flex;
-            flex-direction: column; /* Așază elementele unul sub altul */
-            gap: 10px;
         }
-
-        /* 2. Butoane colorate uniform și de aceeași lățime */
-        .lista-laboratoare a {
+        .meniu-laboratoare li {
+            margin-bottom: 15px; /* Spațiu vertical între butoane /
+        }
+        .meniu-laboratoare a {
             display: inline-block;
-            width: 250px; /* CERINȚA: toate de aceeași lățime */
-            background-color: #3498db; /* CERINȚA: colorate uniform */
-            color: white; 
-            padding: 12px;
-            text-decoration: none;
+            width: 300px; / Toate de aceeași lățime /
             text-align: center;
-            border-radius: 8px; /* Le face să arate a butoane */
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
             font-family: Arial, sans-serif;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease; / Efect la hover /
         }
-
-        /* 3. Opțional: schimbați culoarea la hover */
-        .lista-laboratoare a:hover {
-            background-color: #2980b9; /* CERINȚA: se întunecă la trecerea mouse-ului */
+        .meniu-laboratoare a:hover {
+            background-color: #1a5276; / Schimbă culoarea la hover */
         }
     </style>
 </head>
 <body>
-    <h1>Laboratoarele mele</h1>
-    <p>Programarea aplicatiilor web - Seria MIAI</p>
-    
-    <!-- Am folosit tag-ul <ul> pentru lista neordonată -->
-    <ul class="lista-laboratoare">
+    <h1>Laboratoare Web</h1>
+    <ul class="meniu-laboratoare">
         <li><a href="Laborator1/">Laboratorul 1</a></li>
         <li><a href="Laborator2/">Laboratorul 2</a></li>
-        <li><a href="lab3/">Laboratorul 3 - Publicare site și CSS</a></li>
+        <li><a href="Laborator 3/">Laboratorul 3</a></li>
     </ul>
 </body>
 </html>
