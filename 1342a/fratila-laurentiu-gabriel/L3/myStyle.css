@@ -46,7 +46,10 @@ header {
 .blue-section p {
   font-variant: small-caps;
 }
-.footer {
+footer {
   color: white;
   background-color: black;
+}
+.bonus-paragraph {
+  color: green;
 }
