@@ -1,1 +1,126 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Echipe și pasiuni</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #fffaf0;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        table {
+            width: 100%;
+            border: 2px solid green;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        caption {
+            background-color: orange;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        th {
+            background-color: magenta;
+            color: white;
+            border: 2px solid green;
+            padding: 15px;
+        }
+
+        td {
+            background-color: orange;
+            border: 2px solid green;
+            padding: 15px;
+        }
+
+        td.echipa {
+            background-color: magenta;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Echipele noastre</h1>
+    <p>Fiecare echipă are membri cu pasiuni diferite.</p>
+
+    <table>
+        <caption>Echipe și pasiuni</caption>
+
+        <tr>
+            <th>Echipa</th>
+            <th>Membru</th>
+            <th>Pasiunea 1</th>
+            <th>Pasiunea 2</th>
+        </tr>
+
+        <tr>
+            <td class="echipa" rowspan="4">Munte</td>
+            <td>Ana</td>
+            <td>Drumeții</td>
+            <td>Fotografie</td>
+        </tr>
+        <tr>
+            <td>Vlad</td>
+            <td>Ciclism</td>
+            <td>Camping</td>
+        </tr>
+        <tr>
+            <td>Ioana</td>
+            <td>Escaladă</td>
+            <td>Citit</td>
+        </tr>
+        <tr>
+            <td>Radu</td>
+            <td>Orientare turistică</td>
+            <td>Fotografie</td>
+        </tr>
+
+        <tr>
+            <td class="echipa" rowspan="4">Mare</td>
+            <td>Maria</td>
+            <td>Înot</td>
+            <td>Desen</td>
+        </tr>
+        <tr>
+            <td>Andrei</td>
+            <td>Navigație</td>
+            <td>Fotografie</td>
+        </tr>
+        <tr>
+            <td>Elena</td>
+            <td>Scufundări</td>
+            <td>Lectură</td>
+        </tr>
+        <tr>
+            <td>Paul</td>
+            <td>Surf</td>
+            <td>Înot</td>
+        </tr>
+    </table>
+
+    <p><a href="../index.html">Înapoi la laborator</a></p>
+
+    <!--
+    Exercitiul 4: am adaugat chenare, border-collapse si padding.
+    Exercitiul 5: fiecare echipa are patru membri, inclusiv un
+    membru nou cu doua pasiuni. Celulele echipelor folosesc rowspan="4".
+    Exercitiul 6: caption alb pe portocaliu, antet magenta,
+    celule portocalii, nume de echipe magenta si centrate,
+    chenare verzi contopite si spatii interioare generoase.
+    Titlul paginii si paragraful introductiv au ramas neschimbate.
+    -->
+</body>
+</html>
+
