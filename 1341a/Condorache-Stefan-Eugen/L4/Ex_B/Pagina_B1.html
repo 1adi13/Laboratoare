@@ -24,10 +24,10 @@ border: 5px solid blue;
  padding: 15px;
 }
 #s1 {
-background-color: #00cc66;
+background-color: blue;   /* culoarea primului tabel*/
 }
 #s2 {
-background-color: yellow;
+background-color: yellow; /* culoarea tabelului 2*/
 }
 div {
 color:blue;
@@ -37,7 +37,7 @@ color:blue;
 <body>
 
 <h1 class="center">Tabele formatate</h1>
-<div id="s1">
+<div id="s1"> /* aceasta este culoarea fundalului nu a tabelului, deoarece este in div*/
 <table style="width:100%" class="center">
   <tr>
     <th>Firstname</th>
@@ -56,8 +56,8 @@ color:blue;
   </tr>
 </table>
 <br>
-</div> 
-<div id="s2" style="width:50%">
+</div>
+<div id="s2" style="width:50%">   /* width:50% indica latimea de jumatate de ecran  */
 <br>
 <table style="width:100%" class="centre">
   <tr>
@@ -76,7 +76,7 @@ color:blue;
     <td>94</td>
   </tr>
 </table>
-</div> 
+</div>
 
 
 </body>
