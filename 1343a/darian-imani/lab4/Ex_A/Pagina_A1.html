@@ -1,1 +1,48 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina A1</title>
+    <style>
+        p {
+            color: blue;
+            background-color: #cccc00;
+        }
+
+        body {
+            background-color: #ffffcc;
+            font-family: Arial, sans-serif;
+        }
+
+        .center, p {
+            text-align: center;
+            color: red;
+        }
+
+        h1 {
+            background-color: #00cc66;
+            color: orange;
+        }
+
+        .center {
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center">Heading roșu centrat</h1>
+    <p>Paragraf roșu centrat</p>
+
+    <p><a href="Pagina_A2.html">Pagina A2</a></p>
+    <p><a href="../index.html">Înapoi la laborator</a></p>
+
+    <!--
+    Titlul este roșu deoarece selectorul .center are
+    specificitate mai mare decât selectorul h1.
+    Fundalul verde se păstrează deoarece nu este suprascris.
+    Paragraful este roșu și centrat.
+    -->
+</body>
+</html>
+
