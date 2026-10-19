@@ -6,7 +6,7 @@
 <style>
   #hd {
     font-variant: small-caps;
-    color: royalblue;
+    color: magenta;
   }
 
   h1, caption {
@@ -28,17 +28,30 @@
     width: 100%;
   }
 
-  table, th, td {
-    border: 1px solid black;
+  caption {
+    color: white;
+    background-color: orange;
+    font-size: 28px;
+    padding: 6px;
   }
 
   th, td {
-    padding: 8px;
-    text-align: left;
+    border: 2px solid green;
+    padding: 15px;
   }
 
   th {
-    background-color: #e6e699;
+    background-color: magenta;
+    text-align: center;
+  }
+
+  td {
+    background-color: orange;
+  }
+
+  td[rowspan] {
+    background-color: magenta;
+    font-weight: bold;
     text-align: center;
   }
 </style>
