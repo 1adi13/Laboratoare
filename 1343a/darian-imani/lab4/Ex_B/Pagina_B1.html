@@ -1,1 +1,91 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercițiul 3 - Tabele</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #eeeeee;
+        }
+
+        table {
+            margin-bottom: 25px;
+        }
+
+        table:first-of-type {
+            background-color: blue;
+            color: white;
+        }
+
+        table:nth-of-type(2) {
+            border-collapse: collapse;
+        }
+
+        table:nth-of-type(2) th,
+        table:nth-of-type(2) td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .diferit td:nth-child(2) {
+            padding: 20px;
+        }
+
+        .diferit td:nth-child(3) {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercițiul 3 - Analiza tabelelor</h1>
+
+    <h2>Primul tabel</h2>
+    <table>
+        <tr>
+            <th>Materie</th>
+            <th>Nota</th>
+        </tr>
+        <tr>
+            <td>HTML</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>CSS</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <h2>Al doilea tabel</h2>
+    <table class="diferit">
+        <tr>
+            <th>Nume</th>
+            <th>Grupa</th>
+            <th>Proiect</th>
+        </tr>
+        <tr>
+            <td>Andrei</td>
+            <td>A1</td>
+            <td>HTML</td>
+        </tr>
+        <tr>
+            <td>Maria</td>
+            <td>A2</td>
+            <td>CSS</td>
+        </tr>
+    </table>
+
+    <a href="../index.html">Înapoi la laborator</a>
+
+    <!--
+    Fundalul transparent al elementelor permite vizualizarea
+    fundalului părintelui. Primul tabel are fundal albastru.
+    În al doilea tabel am uniformizat chenarele și spațiile
+    interioare folosind border și padding.
+    Fundalurile nu se moștenesc propriu-zis.
+    -->
+</body>
+</html>
+
