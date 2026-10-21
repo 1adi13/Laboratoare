@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <title>CSS_A2</title>
 <style>
+    h1.center {
+        background-color: #00cc66;
+        color: orange;
+    }
         .center {
         font-variant: small-caps;
         color:blue;
@@ -31,3 +35,10 @@ Duis elementum semper neque, sed posuere quam posuere vel. Morbi auctor tellus l
 <a href="Pagina_A1.html">Pagina 1</a>
 </body>
 </html>
+
+<!--Bonus: regula h1.center (tag + clasa) are specificitate mai mare decat
+.center si decat .center, p (doar clasa), asa ca bate culorile blue si red
+chiar daca e scrisa prima. O regula h1 { ... } nu ar fi suficienta: pentru
+culoare ar pierde in fata lui .center, pentru ca orice clasa bate un tag,
+indiferent de ordine. Fundalul verde s-ar aplica, dar textul nu ar fi
+portocaliu.-->

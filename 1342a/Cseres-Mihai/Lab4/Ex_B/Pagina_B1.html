@@ -23,8 +23,12 @@ table, th, td {
 border: 5px solid blue;
  padding: 15px;
 }
+.centre th, .centre td {
+border: 5px solid blue;
+ padding: 15px;
+}
 #s1 {
-background-color: #00cc66;
+background-color: #0000cc;
 }
 #s2 {
 background-color: yellow;
@@ -78,6 +82,15 @@ color:blue;
 </table>
 </div> 
 
-
 </body>
 </html>
+
+<!--Cele doua tabele au fundaluri diferite deoarece nu au fundal propriu
+, deci sunt transparente si se vede div-ul in care se afla: 
+albastru din s1 (<div id="s1">) la primul tabel
+si yellow din s2 (<div id="s2">) la al doilea.
+
+In al doilea tabel celulele arata diferit pentru ca doar unele au
+class="centre", care bate regula table, th, td (clasa bate tag-ul) si le da
+chenar albastru de 5px si padding 15px. Celelalte au doar chenar negru de 1px
+si fara padding.-->
