@@ -6,10 +6,10 @@ Modificare folosind clase si evenimente
 </title>
 </head>
 <body>
-<h3> Utilizati Javascript si HTML DOM pentru a inlocui imaginile de mai jos asa cum este indicat in textele de deasupra lor</h1>
+<h3> Utilizati Javascript si HTML DOM pentru a inlocui imaginile de mai jos asa cum este indicat in textele de deasupra lor</h3>
 La click vor aparea Pisici
 <hr />
-<img class="animal" src="pesti.jpg" alt="Niste pesti" width="160" height="120">
+<img class="animal" src="Pesti.jpg" alt="Niste pesti" width="160" height="120">
 <br /> <br />
 La mouseover vor aparea Munti
 <hr />
@@ -25,6 +25,32 @@ la mouseout va aparea o Mare
 
 <script>
 // Utilizati getElementsByClassName() pentru a modifica imaginile pentru a se potrivi cu textele de deasupra lor la aparitia evenimentelor indicate!
+var animale = document.getElementsByClassName("animal");
+var peisaje = document.getElementsByClassName("peisaj");
+
+// 1. La click vor aparea Pisici
+animale[0].onclick = function () {
+    this.src = "Img/pisici.jpg";
+    this.alt = "Pisici";
+};
+
+// 2. La mouseover vor aparea Munti
+peisaje[0].onmouseover = function () {
+    this.src = "Img/munti.jpg";
+    this.alt = "Munti";
+};
+
+// 3. La click vor aparea Caini
+animale[1].onclick = function () {
+    this.src = "Img/caini.jpg";
+    this.alt = "Caini";
+};
+
+// 4. La mouseout va aparea o Mare
+peisaje[1].onmouseout = function () {
+    this.src = "Img/mare.jpg";
+    this.alt = "Mare";
+};
 </script>
 
 </body>
