@@ -15,6 +15,16 @@ Acest titlu va fi modificat cu JS
 
 <script>
 // Utilizati getElementsByTagName() si element.style.color/backgroundColor, precum si document.title!
+var p = document.getElementsByTagName("p");
+
+// Modificarea culorii de fundal pentru primul paragraf
+p[0].style.backgroundColor = "yellow";
+
+// Modificarea culorii textului pentru ultimul paragraf
+p[p.length - 1].style.color = "blue";
+
+// Modificarea titlului paginii din bara browserului
+document.title = "Titlu modificat cu JavaScript";
 </script>
 
 </body>

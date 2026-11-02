@@ -24,6 +24,20 @@ Modificare folosind clase
 </div>
 <script>
 // Utilizati getElementsByClassName() si element.style.color/backgroundColor pentru a modifica culorile paragrafelor asa cum se specifica!
+
+// Elemente cu clasa "by": albastru pe fond galben
+var elemBY = document.getElementsByClassName("by");
+for (var i = 0; i < elemBY.length; i++) {
+    elemBY[i].style.color = "blue";
+    elemBY[i].style.backgroundColor = "yellow";
+}
+
+// Elemente cu clasa "yb": galben pe fond albastru
+var elemYB = document.getElementsByClassName("yb");
+for (var j = 0; j < elemYB.length; j++) {
+    elemYB[j].style.color = "yellow";
+    elemYB[j].style.backgroundColor = "blue";
+}
 </script>
 
 </body>
