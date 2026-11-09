@@ -16,23 +16,37 @@ function loadMjs(){
     "</ul>";
 }
 
-// Afisare "masina" LS la deschiderea paginii si dupa salvare/stergere
-function loadMls(){
-    if(localStorage.masina){
-        var masinaL = JSON.parse(localStorage.masina);
-        document.getElementById("mls").innerHTML =
+// Functie comuna de afisare cu depozitul ca parametru
+function afiseaza(storage, idDiv){
+    if(storage.getItem("masina")){
+        var masina = JSON.parse(storage.getItem("masina"));
+        document.getElementById(idDiv).innerHTML =
         "<ul>"+
-        "<li>Tip: " + masinaL.tip +"</li>" +
-        "<li>Model: "  + masinaL.model +"</li>" +
-        "<li>Culoare: "  + masinaL.culoare + "</li>" +
-        "<li>An fabricatie: "  + masinaL.anFab + "</li>" +
+        "<li>Tip: " + masina.tip +"</li>" +
+        "<li>Model: "  + masina.model +"</li>" +
+        "<li>Culoare: "  + masina.culoare + "</li>" +
+        "<li>An fabricatie: "  + masina.anFab + "</li>" +
         "</ul>";
     } else {
-        document.getElementById("mls").innerHTML = "<p>Nicio mașină salvată</p>";
+        document.getElementById(idDiv).innerHTML = "<p>Nicio mașină salvată</p>";
     }
 }
 
-// Salvare obiect "masina" LS din formular cu JSON.stringify
+// Functie comuna de stergere cu depozitul ca parametru
+function sterge(storage, idDiv, sufix){
+    storage.removeItem("masina");
+    document.getElementById("tip" + sufix).value = "";
+    document.getElementById("model" + sufix).value = "";
+    document.getElementById("culoare" + sufix).value = "";
+    document.getElementById("anFab" + sufix).value = "";
+    afiseaza(storage, idDiv);
+}
+
+// "masina" LS - afisare si salvare
+function loadMls(){
+    afiseaza(localStorage, "mls");
+}
+
 function saveMls(){
     var masinaL = {
         tip : document.getElementById("tipLS").value,
@@ -41,27 +55,29 @@ function saveMls(){
         anFab : document.getElementById("anFabLS").value
     };
     localStorage.setItem("masina", JSON.stringify(masinaL));
-    loadMls();
+    afiseaza(localStorage, "mls");
     return false;
 }
 
-// Stergere obiect "masina" LS
-function deleteMls(){
-    localStorage.removeItem("masina");
-    document.getElementById("tipLS").value = "";
-    document.getElementById("modelLS").value = "";
-    document.getElementById("culoareLS").value = "";
-    document.getElementById("anFabLS").value = "";
-    loadMls();
+// "masina" SS - afisare si salvare
+function loadMss(){
+    afiseaza(sessionStorage, "mss");
 }
 
-// "masina" SS
-function loadMss(){
-
+function saveMss(){
+    var masinaS = {
+        tip : document.getElementById("tipSS").value,
+        model : document.getElementById("modelSS").value,
+        culoare : document.getElementById("culoareSS").value,
+        anFab : document.getElementById("anFabSS").value
+    };
+    sessionStorage.setItem("masina", JSON.stringify(masinaS));
+    afiseaza(sessionStorage, "mss");
+    return false;
 }
     </script>
 </head>
-<body onload="loadMls()">
+<body onload="loadMls(); loadMss();">
 <div style="background-color:LimeGreen;color:white;font-size:200%" onclick="loadMjs()">
     <p>Masina JavaScript</p>
     <div id="mjs"></div>
@@ -75,13 +91,21 @@ function loadMss(){
         <label>Culoare <input type="text" id="culoareLS" required></label>
         <label>An fabricație <input type="number" id="anFabLS" required></label>
         <button type="submit">Salvează</button>
-        <button type="button" onclick="deleteMls()">Șterge</button>
+        <button type="button" onclick="sterge(localStorage, 'mls', 'LS')">Șterge</button>
     </form>
     <div id="mls"></div>
 </div>
 
-<div style="background-color:SeaGreen;color:white;font-size:200%" onclick="loadMss()">
+<div style="background-color:SeaGreen;color:white;font-size:200%">
     <p>Masina Session Storage</p>
+    <form onsubmit="return saveMss()">
+        <label>Tip <input type="text" id="tipSS" required></label>
+        <label>Model <input type="text" id="modelSS" required></label>
+        <label>Culoare <input type="text" id="culoareSS" required></label>
+        <label>An fabricație <input type="number" id="anFabSS" required></label>
+        <button type="submit">Salvează</button>
+        <button type="button" onclick="sterge(sessionStorage, 'mss', 'SS')">Șterge</button>
+    </form>
     <div id="mss"></div>
 </div>
 
