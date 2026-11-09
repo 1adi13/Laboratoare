@@ -2,60 +2,88 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Masini - abordare cu folosirea de obiecte"</title>
-	<script>
+    <title>Masini - abordare cu folosirea de obiecte</title>
+    <script>
 // "masina" JS
 function loadMjs(){
-var mJS = {tip : "Dacia", model : "Logan", culoare : "verde", anFab : 2012};
-document.getElementById("mjs").innerHTML = 
-"<ul>"+
-"<li>Tip: " + mJS.tip +"</li>" +
-"<li>Model: "  + mJS.model +"</li>" +
-"<li>Culoare: "  + mJS.culoare + "</li>" +
-"<li>An fabricatie: "  + mJS.anFab + "</li>" +
-"</ul>";
+    var mJS = {tip : "Dacia", model : "Logan", culoare : "verde", anFab : 2012};
+    document.getElementById("mjs").innerHTML =
+    "<ul>"+
+    "<li>Tip: " + mJS.tip +"</li>" +
+    "<li>Model: "  + mJS.model +"</li>" +
+    "<li>Culoare: "  + mJS.culoare + "</li>" +
+    "<li>An fabricatie: "  + mJS.anFab + "</li>" +
+    "</ul>";
 }
-// "masina" LS
+
+// Afisare "masina" LS la deschiderea paginii si dupa salvare/stergere
 function loadMls(){
-	if(localStorage.masina){
-		var masinaL = JSON.parse(localStorage.masina)}
-	else{
-		var tL = prompt("Tip");
-		var mL = prompt("Model");
-		var cL = prompt("Culoare:");
-		var masinaL = {tip : tL, model : mL, culoare : cL};
-		localStorage.setItem("masina", JSON.stringify(masinaL));
-	}
-document.getElementById("mls").innerHTML = 
-"<ul>"+
-"<li>Tip: " + masinaL.tip +"</li>" +
-"<li>Model: "  + masinaL.model +"</li>" +
-"<li>Culoare: "  + masinaL.culoare + "</li>" +
-"</ul>";
+    if(localStorage.masina){
+        var masinaL = JSON.parse(localStorage.masina);
+        document.getElementById("mls").innerHTML =
+        "<ul>"+
+        "<li>Tip: " + masinaL.tip +"</li>" +
+        "<li>Model: "  + masinaL.model +"</li>" +
+        "<li>Culoare: "  + masinaL.culoare + "</li>" +
+        "<li>An fabricatie: "  + masinaL.anFab + "</li>" +
+        "</ul>";
+    } else {
+        document.getElementById("mls").innerHTML = "<p>Nicio mașină salvată</p>";
+    }
 }
+
+// Salvare obiect "masina" LS din formular cu JSON.stringify
+function saveMls(){
+    var masinaL = {
+        tip : document.getElementById("tipLS").value,
+        model : document.getElementById("modelLS").value,
+        culoare : document.getElementById("culoareLS").value,
+        anFab : document.getElementById("anFabLS").value
+    };
+    localStorage.setItem("masina", JSON.stringify(masinaL));
+    loadMls();
+    return false;
+}
+
+// Stergere obiect "masina" LS
+function deleteMls(){
+    localStorage.removeItem("masina");
+    document.getElementById("tipLS").value = "";
+    document.getElementById("modelLS").value = "";
+    document.getElementById("culoareLS").value = "";
+    document.getElementById("anFabLS").value = "";
+    loadMls();
+}
+
 // "masina" SS
 function loadMss(){
 
 }
-</script>
+    </script>
 </head>
-<body>
+<body onload="loadMls()">
 <div style="background-color:LimeGreen;color:white;font-size:200%" onclick="loadMjs()">
-<p>Masina JavaScript</p>
-	<div id="mjs"></div>
-	</div>
+    <p>Masina JavaScript</p>
+    <div id="mjs"></div>
+</div>
 
-<div style="background-color:ForestGreen;color:white;font-size:200%" onclick="loadMls()">
-	<p>Masina Local Storage</p>
-	<div id="mls"></div>
-	
-	</div>
+<div style="background-color:ForestGreen;color:white;font-size:200%">
+    <p>Masina Local Storage</p>
+    <form onsubmit="return saveMls()">
+        <label>Tip <input type="text" id="tipLS" required></label>
+        <label>Model <input type="text" id="modelLS" required></label>
+        <label>Culoare <input type="text" id="culoareLS" required></label>
+        <label>An fabricație <input type="number" id="anFabLS" required></label>
+        <button type="submit">Salvează</button>
+        <button type="button" onclick="deleteMls()">Șterge</button>
+    </form>
+    <div id="mls"></div>
+</div>
 
-<div style="background-color:SeaGreen;color:white;font-size:200%"  onclick="loadMss()">
-	<p>Masina Session Storage</p>
-	<div id="mss"></div>
-	
-	</div>
+<div style="background-color:SeaGreen;color:white;font-size:200%" onclick="loadMss()">
+    <p>Masina Session Storage</p>
+    <div id="mss"></div>
+</div>
 
 </body>
 </html>
