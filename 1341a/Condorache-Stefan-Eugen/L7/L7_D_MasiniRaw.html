@@ -14,7 +14,7 @@ function loadMjs(){
     "</ul>";
 }
 
-// Afisare "masina" LS la deschiderea paginii si dupa salvare
+// Afisare "masina" LS la deschiderea paginii si dupa salvare/stergere
 function loadMls(){
     if(localStorage.tip && localStorage.model && localStorage.culoare){
         document.getElementById("mls").innerHTML =
@@ -37,36 +37,53 @@ function saveMls(){
     return false;
 }
 
-// "masina" SS
+// Stergere "masina" LS
+function deleteMls(){
+    localStorage.removeItem("tip");
+    localStorage.removeItem("model");
+    localStorage.removeItem("culoare");
+    document.getElementById("tipLS").value = "";
+    document.getElementById("modelLS").value = "";
+    document.getElementById("culoareLS").value = "";
+    loadMls();
+}
+
+// Afisare "masina" SS la deschiderea paginii si dupa salvare/stergere
 function loadMss(){
-    if(sessionStorage.tip){
-        var tS = sessionStorage.tip;
+    if(sessionStorage.tip && sessionStorage.model && sessionStorage.culoare){
+        document.getElementById("mss").innerHTML =
+        "<ul>"+
+        "<li>Tip: " + sessionStorage.tip + "</li>" +
+        "<li>Model: " + sessionStorage.model + "</li>" +
+        "<li>Culoare: " + sessionStorage.culoare + "</li>" +
+        "</ul>";
     } else {
-        var tS = prompt("Tip");
-        sessionStorage.tip = tS;
+        document.getElementById("mss").innerHTML = "<p>Nicio mașină salvată</p>";
     }
-    if(sessionStorage.model){
-        var mS = sessionStorage.model;
-    } else {
-        var mS = prompt("Model");
-        sessionStorage.model = mS;
-    }
-    if(sessionStorage.culoare){
-        var cS = sessionStorage.culoare;
-    } else {
-        var cS = prompt("Culoare:");
-        sessionStorage.culoare = cS;
-    }
-    document.getElementById("mss").innerHTML =
-    "<ul>"+
-    "<li>Tip: " + tS +"</li>" +
-    "<li>Model: "  + mS +"</li>" +
-    "<li>Culoare: "  + cS + "</li>" +
-    "</ul>";
+}
+
+// Salvare "masina" SS din formular
+function saveMss(){
+    sessionStorage.tip = document.getElementById("tipSS").value;
+    sessionStorage.model = document.getElementById("modelSS").value;
+    sessionStorage.culoare = document.getElementById("culoareSS").value;
+    loadMss();
+    return false;
+}
+
+// Stergere "masina" SS
+function deleteMss(){
+    sessionStorage.removeItem("tip");
+    sessionStorage.removeItem("model");
+    sessionStorage.removeItem("culoare");
+    document.getElementById("tipSS").value = "";
+    document.getElementById("modelSS").value = "";
+    document.getElementById("culoareSS").value = "";
+    loadMss();
 }
     </script>
 </head>
-<body onload="loadMls()">
+<body onload="loadMls(); loadMss();">
 <div style="background-color:LimeGreen;color:white;font-size:200%" onclick="loadMjs()">
     <p>Masina JavaScript</p>
     <div id="mjs"></div>
@@ -79,12 +96,20 @@ function loadMss(){
         <label>Model <input type="text" id="modelLS" required></label>
         <label>Culoare <input type="text" id="culoareLS" required></label>
         <button type="submit">Salvează</button>
+        <button type="button" onclick="deleteMls()">Șterge</button>
     </form>
     <div id="mls"></div>
 </div>
 
-<div style="background-color:SeaGreen;color:white;font-size:200%" onclick="loadMss()">
+<div style="background-color:SeaGreen;color:white;font-size:200%">
     <p>Masina Session Storage</p>
+    <form onsubmit="return saveMss()">
+        <label>Tip <input type="text" id="tipSS" required></label>
+        <label>Model <input type="text" id="modelSS" required></label>
+        <label>Culoare <input type="text" id="culoareSS" required></label>
+        <button type="submit">Salvează</button>
+        <button type="button" onclick="deleteMss()">Șterge</button>
+    </form>
     <div id="mss"></div>
 </div>
 
