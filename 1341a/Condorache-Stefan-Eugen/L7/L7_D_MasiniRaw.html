@@ -3,91 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Masini - abordare "bruta"</title>
-	<script>
+    <script>
 // "masina" JS
 function loadMjs(){
-document.getElementById("mjs").innerHTML = 
-"<ul>"+
-"<li>Tip:  Dacia</li>" +
-"<li>Model:  Logan</li>" +
-"<li>Culoare:  verde</li>" +
-"</ul>";
+    document.getElementById("mjs").innerHTML =
+    "<ul>"+
+    "<li>Tip:  Dacia</li>" +
+    "<li>Model:  Logan</li>" +
+    "<li>Culoare:  verde</li>" +
+    "</ul>";
 }
-// "masina" LS
+
+// Afisare "masina" LS la deschiderea paginii si dupa salvare
 function loadMls(){
-	if(localStorage.tip){
-		var tL = localStorage.tip;}
-	else{
-		var tL = prompt("Tip");
-		localStorage.tip = tL;
-	}
-	if(localStorage.model){
-		var mL = localStorage.model;
-	
-		}
-	else{
-		var mL = prompt("Model");
-		localStorage.model = mL;
-	}
-	if(localStorage.culoare){
-		var cL = localStorage.culoare;}
-	else{
-		var cL = prompt("Culoare:");
-		localStorage.culoare = cL;
-	}
-document.getElementById("mls").innerHTML = 
-"<ul>"+
-"<li>Tip: " + tL +"</li>" +
-"<li>Model: "  + mL +"</li>" +
-"<li>Culoare: "  + cL + "</li>" +
-"</ul>";
+    if(localStorage.tip && localStorage.model && localStorage.culoare){
+        document.getElementById("mls").innerHTML =
+        "<ul>"+
+        "<li>Tip: " + localStorage.tip + "</li>" +
+        "<li>Model: " + localStorage.model + "</li>" +
+        "<li>Culoare: " + localStorage.culoare + "</li>" +
+        "</ul>";
+    } else {
+        document.getElementById("mls").innerHTML = "<p>Nicio mașină salvată</p>";
+    }
 }
+
+// Salvare "masina" LS din formular
+function saveMls(){
+    localStorage.tip = document.getElementById("tipLS").value;
+    localStorage.model = document.getElementById("modelLS").value;
+    localStorage.culoare = document.getElementById("culoareLS").value;
+    loadMls();
+    return false;
+}
+
 // "masina" SS
 function loadMss(){
-if(sessionStorage.tip){
-var tS = sessionStorage.tip;}
-else{
-var tS = prompt("Tip");
-sessionStorage.tip = tS;
+    if(sessionStorage.tip){
+        var tS = sessionStorage.tip;
+    } else {
+        var tS = prompt("Tip");
+        sessionStorage.tip = tS;
+    }
+    if(sessionStorage.model){
+        var mS = sessionStorage.model;
+    } else {
+        var mS = prompt("Model");
+        sessionStorage.model = mS;
+    }
+    if(sessionStorage.culoare){
+        var cS = sessionStorage.culoare;
+    } else {
+        var cS = prompt("Culoare:");
+        sessionStorage.culoare = cS;
+    }
+    document.getElementById("mss").innerHTML =
+    "<ul>"+
+    "<li>Tip: " + tS +"</li>" +
+    "<li>Model: "  + mS +"</li>" +
+    "<li>Culoare: "  + cS + "</li>" +
+    "</ul>";
 }
-if(sessionStorage.model){
-var mS = sessionStorage.model;}
-else{
-var mS = prompt("Model");
-sessionStorage.model = mS;
-}
-if(sessionStorage.culoare){
-var cS = sessionStorage.culoare;}
-else{
-var cS = prompt("Culoare:");
-sessionStorage.culoare = cS;
-}
-document.getElementById("mss").innerHTML = 
-"<ul>"+
-"<li>Tip: " + tS +"</li>" +
-"<li>Model: "  + mS +"</li>" +
-"<li>Culoare: "  + cS + "</li>" +
-"</ul>";
-}
-</script>
+    </script>
 </head>
-<body>
+<body onload="loadMls()">
 <div style="background-color:LimeGreen;color:white;font-size:200%" onclick="loadMjs()">
-<p>Masina JavaScript</p>
-	<div id="mjs"></div>
-	</div>
+    <p>Masina JavaScript</p>
+    <div id="mjs"></div>
+</div>
 
-<div style="background-color:ForestGreen;color:white;font-size:200%" onclick="loadMls()">
-	<p>Masina Local Storage</p>
-	<div id="mls"></div>
-	
-	</div>
+<div style="background-color:ForestGreen;color:white;font-size:200%">
+    <p>Masina Local Storage</p>
+    <form onsubmit="return saveMls()">
+        <label>Tip <input type="text" id="tipLS" required></label>
+        <label>Model <input type="text" id="modelLS" required></label>
+        <label>Culoare <input type="text" id="culoareLS" required></label>
+        <button type="submit">Salvează</button>
+    </form>
+    <div id="mls"></div>
+</div>
 
-<div style="background-color:SeaGreen;color:white;font-size:200%"  onclick="loadMss()">
-	<p>Masina Session Storage</p>
-	<div id="mss"></div>
-	
-	</div>
+<div style="background-color:SeaGreen;color:white;font-size:200%" onclick="loadMss()">
+    <p>Masina Session Storage</p>
+    <div id="mss"></div>
+</div>
 
 </body>
 </html>
