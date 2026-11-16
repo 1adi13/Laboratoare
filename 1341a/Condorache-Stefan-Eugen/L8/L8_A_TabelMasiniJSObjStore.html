@@ -7,6 +7,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: 15px;
 }
 
 td, th {
@@ -14,61 +15,87 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
+form {
+  margin-bottom: 15px;
+}
+
+input {
+  margin-right: 10px;
+}
 </style>
 </head>
 <body>
-<h1 > Masinile dorite </h1>
+<h1>Masinile dorite</h1>
 
-<p>
-<button onclick="adaugaMasina()";> Adauga masina</button>
+<form onsubmit="return adaugaMasina()">
+  <label for="marca">Marca:</label>
+  <input type="text" id="marca" required>
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" required>
+
+  <label for="culoare">Culoare:</label>
+  <input type="text" id="culoare" required>
+
+  <label for="anFab">An fabricatie:</label>
+  <input type="number" id="anFab" required>
+
+  <button type="submit">Adauga masina</button>
+</form>
+
 <table id="tm">
-<tr>
+  <tr>
     <th>Marca</th>
     <th>Model</th>
     <th>Culoare</th>
+    <th>An fabricatie</th>
   </tr>
-  
 </table>
-</p>
+
 <script>
-var m1 = new masina("Opel", "Zafira", "gri");
-var m2 = new masina("Seat", "Ibiza", "roz");
+var m1 = new masina("Opel", "Zafira", "gri", 2015);
+var m2 = new masina("Seat", "Ibiza", "roz", 2018);
 
-document.getElementById("tm").innerHTML += m1.randNou(); 
+document.getElementById("tm").innerHTML += m1.randNou();
+document.getElementById("tm").innerHTML += m2.randNou();
 
-document.getElementById("tm").innerHTML +=  m2.randNou(); 
-if(localStorage.marca) {
-var marca = localStorage.marca;
-var model = localStorage.model;
-var culoare = localStorage.culoare;
-
-var mNoua = new masina(marca, model, culoare);
-
-document.getElementById("tm").innerHTML +=  mNoua.randNou();
+if (localStorage.marca) {
+  var mNoua = new masina(
+    localStorage.marca,
+    localStorage.model,
+    localStorage.culoare,
+    localStorage.anFab
+  );
+  document.getElementById("tm").innerHTML += mNoua.randNou();
 }
 
-
-function masina(mk, md, cl){
-this.marca= mk;
-this.model = md;
-this.culoare = cl;
-this.randNou = function() {return "<tr><td>" + this.marca +"</td><td>" + this.model + "</td><td>" + this.culoare + "</td></tr>"};
-
+function masina(mk, md, cl, an) {
+  this.marca = mk;
+  this.model = md;
+  this.culoare = cl;
+  this.anFab = an;
+  this.randNou = function() {
+    return "<tr><td>" + this.marca + "</td><td>" + this.model +
+           "</td><td>" + this.culoare + "</td><td>" + this.anFab + "</td></tr>";
+  };
 }
+
 function adaugaMasina() {
+  var marca = document.getElementById("marca").value;
+  var model = document.getElementById("model").value;
+  var culoare = document.getElementById("culoare").value;
+  var an = document.getElementById("anFab").value;
 
-var marca= prompt("Marca:");
-var model= prompt("Model:");
-var culoare= prompt("Culoare:");
+  var mNoua = new masina(marca, model, culoare, an);
+  document.getElementById("tm").innerHTML += mNoua.randNou();
 
-var mNoua = new masina(marca, model, culoare);
+  localStorage.setItem("marca", marca);
+  localStorage.setItem("model", model);
+  localStorage.setItem("culoare", culoare);
+  localStorage.setItem("anFab", an);
 
-document.getElementById("tm").innerHTML +=  mNoua.randNou(); 
-
-localStorage.setItem("marca", marca);
-localStorage.setItem("model", model);
-localStorage.setItem("culoare", culoare);
-
+  return false;
 }
 </script>
 </body>
