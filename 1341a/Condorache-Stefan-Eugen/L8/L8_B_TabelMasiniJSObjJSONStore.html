@@ -7,6 +7,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: 15px;
 }
 
 td, th {
@@ -14,60 +15,122 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
+form {
+  margin-bottom: 10px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+#mesaj {
+  color: #d93025;
+  font-weight: bold;
+  min-height: 20px;
+}
 </style>
 </head>
 <body>
-<h1 > Masinile dorite </h1>
+<h1>Masinile dorite</h1>
 
-<p>
-<button onclick="adaugaMasina()";> Adauga masina</button>
+<form id="formMasina" onsubmit="return adaugaMasina()" novalidate>
+  <label for="marca">Marca:</label>
+  <input type="text" id="marca">
+
+  <label for="model">Model:</label>
+  <input type="text" id="model">
+
+  <label for="culoare">Culoare:</label>
+  <input type="text" id="culoare">
+
+  <label for="anFab">An fabricatie:</label>
+  <input type="text" id="anFab">
+
+  <button type="submit">Adauga masina</button>
+</form>
+
+<p id="mesaj"></p>
+
 <table id="tm">
-<tr>
+  <tr>
     <th>Marca</th>
     <th>Model</th>
     <th>Culoare</th>
+    <th>An fabricatie</th>
   </tr>
-
 </table>
-</p>
+
 <script>
-var m1 = new masina("Opel", "Zafira", "gri");
-var m2 = new masina("Seat", "Ibiza", "roz");
+var m1 = new masina("Opel", "Zafira", "gri", 2015);
+var m2 = new masina("Seat", "Ibiza", "roz", 2018);
 
 document.getElementById("tm").innerHTML += m1.randNou();
+document.getElementById("tm").innerHTML += m2.randNou();
 
-document.getElementById("tm").innerHTML +=  m2.randNou();
-if(localStorage.masinaN) {
-var masinaJSON = localStorage.masinaN;
-var mNoua = JSON.parse(masinaJSON);
+if (localStorage.masinaN) {
+  var masinaJSON = localStorage.masinaN;
+  var mNoua = JSON.parse(masinaJSON);
 
-document.getElementById("tm").innerHTML += mNoua.randNou; // proprietate
+  document.getElementById("tm").innerHTML += mNoua.randNou;
 }
 
-
-
-function masina(mk, md, cl){
-this.marca= mk;
-this.model = md;
-this.culoare = cl;
-this.randNou = function() {return "<tr><td>" + this.marca +"</td><td>" + this.model + "</td><td>" + this.culoare + "</td></tr>"}
+function masina(mk, md, cl, an) {
+  this.marca = mk;
+  this.model = md;
+  this.culoare = cl;
+  this.anFab = an;
+  this.randNou = function() {
+    return "<tr><td>" + this.marca + "</td><td>" + this.model +
+           "</td><td>" + this.culoare + "</td><td>" + this.anFab + "</td></tr>";
+  };
 }
+
+function valideaza(marca, model, culoare, an) {
+  var anulCurent = new Date().getFullYear();
+
+  if (marca.trim() === "") {
+    return "Marca nu poate fi goală sau formată doar din spații.";
+  }
+  if (model.trim() === "") {
+    return "Modelul nu poate fi gol sau format doar din spații.";
+  }
+  if (culoare.trim() === "") {
+    return "Culoarea nu poate fi goală sau formată doar din spații.";
+  }
+
+  var anNumar = Number(an);
+  if (an.trim() === "" || !Number.isInteger(anNumar) || anNumar < 1900 || anNumar > anulCurent) {
+    return "Anul de fabricație trebuie să fie un număr întreg între 1900 și " + anulCurent + ".";
+  }
+
+  return "";
+}
+
 function adaugaMasina() {
+  var marca = document.getElementById("marca").value;
+  var model = document.getElementById("model").value;
+  var culoare = document.getElementById("culoare").value;
+  var an = document.getElementById("anFab").value;
+  var paragrafMesaj = document.getElementById("mesaj");
 
+  var eroare = valideaza(marca, model, culoare, an);
+  if (eroare !== "") {
+    paragrafMesaj.textContent = eroare;
+    return false;
+  }
 
-var marca= prompt("Marca:");
-var model= prompt("Model:");
-var culoare= prompt("Culoare:");
-var mNoua = new masina(marca, model, culoare);
+  paragrafMesaj.textContent = "";
 
-document.getElementById("tm").innerHTML +=  mNoua.randNou();
+  var mNoua = new masina(marca.trim(), model.trim(), culoare.trim(), Number(an));
+  document.getElementById("tm").innerHTML += mNoua.randNou();
 
-mNoua.randNou = 	mNoua.randNou().toString();
-var myJSON = JSON.stringify(mNoua);
+  mNoua.randNou = mNoua.randNou().toString();
+  var myJSON = JSON.stringify(mNoua);
+  localStorage.setItem("masinaN", myJSON);
 
-localStorage.setItem("masinaN", myJSON);
-
-
+  document.getElementById("formMasina").reset();
+  return false;
 }
 </script>
 </body>
